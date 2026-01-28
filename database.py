@@ -29,7 +29,36 @@ class Database():
         except AttributeError:
             print ("Faça a conexão")     
             
+    def insert_user(self, name, user, password, access):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("""
+                    INSERT INTO users (name, user, password, access) VALUES (?,?,?,?)      
+                """, (name, user, password, access))       
+            self.connection.commit()
+        except AttributeError:
+            print ("Faça a conexão")
             
+            
+    def check_user(self, user, password):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("""
+                     SELECT * FROM users    
+            """)  
+             
+            for linha in cursor.fetchall(): 
+                if linha[2].upper() == user.upper() and linha[3] == password and linha [4] == "admin":
+                    return "Administrador" 
+                        
+                elif linha[2].upper() == user.upper() and linha[3] == password and linha [4] == "user":
+                    return "Usuário Comum"
+                        
+                else:
+                    continue
+            return "Inexistente"
+        except:    
+            pass
             
 if __name__ == "__main__":
     db = Database()
