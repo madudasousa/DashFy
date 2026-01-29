@@ -157,28 +157,30 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.txt_senha = QLabel(self.pg_cadastro)
+        self.label_senha = QLabel(self.pg_cadastro)
+        self.label_senha.setObjectName(u"label_senha")
+
+        self.horizontalLayout_7.addWidget(self.label_senha)
+
+        self.txt_senha = QLineEdit(self.pg_cadastro)
         self.txt_senha.setObjectName(u"txt_senha")
+        self.txt_senha.setEchoMode(QLineEdit.Password)
 
         self.horizontalLayout_7.addWidget(self.txt_senha)
-
-        self.lineEdit_3 = QLineEdit(self.pg_cadastro)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
-
-        self.horizontalLayout_7.addWidget(self.lineEdit_3)
 
 
         self.verticalLayout_14.addLayout(self.horizontalLayout_7)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.label_10 = QLabel(self.pg_cadastro)
-        self.label_10.setObjectName(u"label_10")
+        self.label_15 = QLabel(self.pg_cadastro)
+        self.label_15.setObjectName(u"label_15")
 
-        self.horizontalLayout_6.addWidget(self.label_10)
+        self.horizontalLayout_6.addWidget(self.label_15)
 
         self.txt_senha2 = QLineEdit(self.pg_cadastro)
         self.txt_senha2.setObjectName(u"txt_senha2")
+        self.txt_senha2.setEchoMode(QLineEdit.Password)
 
         self.horizontalLayout_6.addWidget(self.txt_senha2)
 
@@ -360,7 +362,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.Pages.setCurrentIndex(2)
+        self.Pages.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(1)
 
 
@@ -381,9 +383,9 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"CADASTRAR USU\u00c1RIO", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Nome:", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Usu\u00e1rio:", None))
-        self.txt_senha.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Confirmar Senha:", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Perfil", None))
+        self.label_senha.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Confirmar senha:", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Perfil:", None))
         self.cb_perfil.setItemText(0, QCoreApplication.translate("MainWindow", u"Usu\u00e1rio", None))
         self.cb_perfil.setItemText(1, QCoreApplication.translate("MainWindow", u"Administrador", None))
 

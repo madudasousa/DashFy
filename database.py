@@ -48,10 +48,10 @@ class Database():
             """)  
              
             for linha in cursor.fetchall(): 
-                if linha[2].upper() == user.upper() and linha[3] == password and linha [4] == "admin":
+                if linha[2].upper() == user.upper() and linha[3] == password and linha[4].lower() == "administrador":
                     return "Administrador" 
                         
-                elif linha[2].upper() == user.upper() and linha[3] == password and linha [4] == "user":
+                elif linha[2].upper() == user.upper() and linha[3] == password and linha[4].lower() in ["usuario", "usuário", "user"]:
                     return "Usuário Comum"
                         
                 else:
