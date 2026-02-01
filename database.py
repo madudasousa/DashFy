@@ -59,10 +59,55 @@ class Database():
             return "Inexistente"
         except:    
             pass
+        
+    def insert_data(self, full_dataset):
+        cursor = self.connection.cursor()
+        campos_tabela = ( 
+                'NFe', 'serie', 'data_emissao', 'chave', 'cnpj_emitente',
+                'nome_emitente', 'valorNfe', 'data_importacao',
+                'itemNota', 'codigo', 'descricao', 'ncm', 'quantidade',
+                'valor_unitario', 'valor_total', 'usuario', 'data_saida')
+        qntd = ','.join(map(str, ['?'] * len(campos_tabela)))
+        query = f"""INSERT INTO notas ({', '.join(campos_tabela)}) VALUES ({qntd})"""
+        
+        try:
+            for nota in full_dataset:
+                cursor.execute(query, tuple(nota))
+                self.connection.commit()
+        except sqlite3.IntegrityError as e:
+            print(f"Erro ao inserir dados: {e}")   
+            
+    def create_table_notas(self):
+       cursor = self.connection.cursor()
+       cursor.execute("""
+            CREATE TABLE IF NOT EXISTS notas(
+                NFe TEXT,
+                serie TEXT,
+                data_emissao TEXT,
+                chave TEXT,
+                cnpj_emitente TEXT,
+                nome_emitente TEXT,
+                valorNfe TEXT,
+                data_importacao TEXT,
+                itemNota INTEGER,
+                codigo TEXT,
+                descricao TEXT,
+                ncm TEXT,
+                quantidade TEXT,
+                valor_unitario TEXT,
+                valor_total TEXT,
+                usuario TEXT,
+                data_saida TEXT,
+                
+                PRIMARY KEY (chave, NFe, itemNota)
+            );     
+        """)              
+        
             
 if __name__ == "__main__":
     db = Database()
     db.conecta()
     db.create_table_users()
+    db.create_table_notas()
     db.close_connection()
     
