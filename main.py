@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QFileDialog, QWidget, QMainWindow, QMessageBox
+from PySide6.QtWidgets import QApplication, QFileDialog, QWidget, QMainWindow, QMessageBox, QTreeWidgetItem
 from ui_login import Ui_Form
 from ui_main import Ui_MainWindow
 import sys
@@ -7,6 +7,8 @@ from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
 import resources_rc
 from xml_files import Read_xml
+import sqlite3
+import pandas as pd
 
 
 class Login(QWidget, Ui_Form):
@@ -70,9 +72,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_open.clicked.connect(self.open_path)
         self.btn_importar.clicked.connect(self.import_xml_files)
         
-        #ARQUIVOS XML
-        self.btn_open.clicked.connect(self.open_path)
-        self.btn_importar.clicked.connect(self.import_xml_files)
+        
+        self.table_estoque()
         
     def subscribe_user(self):
         if self.txt_senha.text() != self.txt_senha2.text():
@@ -142,7 +143,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg.exec()
         self.progressBar.setValue(0)
         db.close_connection()
+        
+    def table_estoque(self):
+        self.tw_estoque.setStyleSheet("color:#fff; font-size: 15px;")
+        self.tw_estoque.setStyleSheet(u" QHeaderView{color:black}")
+        
+        conec = sqlite3.connect('system.db')
+        result = pd.read_sql_query("SELECT * FROM notas WHERE data_saida = ''", conec)
+        result = result.values.tolist()
+        
+        self.x = ""
+        for i in result:
+            #faz o check para identificar a mesma nota e adicionar apenas um
+            if i[0] == self.x:
+                QTreeWidgetItem(self.campo, i)
+            else:
+                self.campo = QTreeWidgetItem(self.tw_estoque, i)
+                self.campo.setCheckState(0, Qt.CheckState.Unchecked)   
+                
+                self.x = i[0]
+        self.tw_estoque.setSortingEnabled(True)
+        
+        for i in range (1, 17):
+            self.tw_estoque.resizeColumnToContents(i)        
+        
 
+    def table_saida(self):
+        pass
+    
+    def table_geral(self):
+        pass
+    
+     
 if __name__ == "__main__":  
     app = QApplication(sys.argv)
     window = Login()
