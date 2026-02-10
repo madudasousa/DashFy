@@ -211,7 +211,7 @@ QPushButton:hover {
 background-color: rgb(214, 207, 242);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="pg_home">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -1123,17 +1123,17 @@ QPushButton:hover {
                   </column>
                   <column>
                    <property name="text">
-                    <string>Sério</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Data Importa</string>
+                    <string>Série</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
                     <string>Data Importação</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Data Saida</string>
                    </property>
                   </column>
                   <column>
@@ -1151,7 +1151,7 @@ QPushButton:hover {
           </widget>
           <widget class="QWidget" name="Tab2">
            <attribute name="title">
-            <string>Estoque</string>
+            <string>Geral</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_18">
             <item>
@@ -1162,7 +1162,7 @@ QPushButton:hover {
                </font>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#4b3f72;&quot;&gt;Estoque&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#4b3f72;&quot;&gt;Geral&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1251,7 +1251,7 @@ color: rgb(0, 0, 0);</string>
              </widget>
             </item>
             <item>
-             <widget class="QTableView" name="tb_estoque"/>
+             <widget class="QTableView" name="tb_geral"/>
             </item>
            </layout>
           </widget>
@@ -1264,8 +1264,6 @@ color: rgb(0, 0, 0);</string>
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="../ProjetoPython/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe>
+  <infNFe>
+    <ide>
+      <nNF>12345</nNF>
+      <serie>1</serie>
+      <dhEmi>2025-01-10</dhEmi>
+    </ide>
+
+    <emit>
+      <CNPJ>12345678000199</CNPJ>
+      <xNome>Empresa Exemplo LTDA</xNome>
+    </emit>
+
+    <total>
+      <ICMSTot>
+        <vNF>1500.00</vNF>
+      </ICMSTot>
+    </total>
+
+    <det nItem="1">
+      <prod>
+        <cProd>001</cProd>
+        <xProd>Produto Exemplo A</xProd>
+        <NCM>84713012</NCM>
+        <qCom>10</qCom>
+        <vUnCom>100.00</vUnCom>
+        <vProd>1000.00</vProd>
+      </prod>
+    </det>
+
+    <det nItem="2">
+      <prod>
+        <cProd>002</cProd>
+        <xProd>Produto Exemplo B</xProd>
+        <NCM>84713012</NCM>
+        <qCom>5</qCom>
+        <vUnCom>100.00</vUnCom>
+        <vProd>500.00</vProd>
+      </prod>
+    </det>
+
+    <infAdic>
+      <chNFe>35250112345678000199550010000123451234567890</chNFe>
+    </infAdic>
+  </infNFe>
+</NFe>

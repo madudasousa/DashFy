@@ -38,8 +38,7 @@ class Database():
             self.connection.commit()
         except AttributeError:
             print ("Faça a conexão")
-            
-            
+                   
     def check_user(self, user, password):
         try:
             cursor = self.connection.cursor()
@@ -70,12 +69,17 @@ class Database():
         qntd = ','.join(map(str, ['?'] * len(campos_tabela)))
         query = f"""INSERT INTO notas ({', '.join(campos_tabela)}) VALUES ({qntd})"""
         
-        try:
-            for nota in full_dataset:
-                cursor.execute(query, tuple(nota))
+        inserted = 0
+        failed = 0
+        for nota in full_dataset:
+            try:
+                cursor.execute(query, nota)
                 self.connection.commit()
-        except sqlite3.IntegrityError as e:
-            print(f"Erro ao inserir dados: {e}")   
+                inserted += 1
+            except sqlite3.Error as e:
+                failed += 1
+                print(f"Erro ao inserir dados: {e}")
+        return inserted, failed
             
     def create_table_notas(self):
        cursor = self.connection.cursor()
@@ -102,7 +106,27 @@ class Database():
                 PRIMARY KEY (chave, NFe, itemNota)
             );     
         """)              
-        
+    
+    def update_estoque(self, data_saida, user, notas):
+        try:
+            cursor = self.connection.cursor()
+            for nota in notas:
+                cursor.execute(f"""UPDATE Notas SET Data_saida = '{data_saida}',
+                               usuario = '{user}' WHERE Nfe = '{nota}'""")  
+                self.connection.commit()
+                
+        except AttributeError:
+            print("faça a conexão para alterar os campos")   
+            
+    def update_estorno(self, notas):
+        try:
+            cursor = self.connection.cursor()
+            for nota in notas:
+                cursor.execute(f"UPDATE Notas SET Data_saida = '' WHERE Nfe = '{nota}'")  
+                self.connection.commit()
+                
+        except AttributeError:
+            print("faça a conexão para alterar os campos")           
             
 if __name__ == "__main__":
     db = Database()

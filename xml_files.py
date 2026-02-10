@@ -13,20 +13,31 @@ class Read_xml():
     def nfe_data(self, xml):
         root = ET.parse(xml).getroot()    
         nsNfe = {'ns': 'http://www.portalfiscal.inf.br/nfe'}
+        has_ns = root.tag.startswith("{")
+
+        def find_text(path_ns, path_plain):
+            node = root.find(path_ns, nsNfe) if has_ns else root.find(path_plain)
+            return self.check_none(node)
+
+        def findall_nodes(path_ns, path_plain):
+            return root.findall(path_ns, nsNfe) if has_ns else root.findall(path_plain)
         
         #DADOS DA NOTA FISCAL
-        nfe = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:ide/ns:nNF", nsNfe))
-        serie = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:ide/ns:serie", nsNfe))
-        data_emissao = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:ide/ns:dhEmi", nsNfe))
+        nfe = find_text("./ns:NFe/ns:infNFe/ns:ide/ns:nNF", "./infNFe/ide/nNF")
+        serie = find_text("./ns:NFe/ns:infNFe/ns:ide/ns:serie", "./infNFe/ide/serie")
+        data_emissao = find_text("./ns:NFe/ns:infNFe/ns:ide/ns:dhEmi", "./infNFe/ide/dhEmi")
         data_emissao = F'{data_emissao[8:10]}/{data_emissao[5:7]}/{data_emissao[0:4]}'
         
         #DADOS EMITENTE
-        chave = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:ide/ns:chNFe", nsNfe))
-        cnpj_emitente = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:emit/ns:CNPJ", nsNfe))
-        nome_emitente = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:emit/ns:xNome", nsNfe))
+        chave = find_text("./ns:NFe/ns:infNFe/ns:ide/ns:chNFe", "./infNFe/ide/chNFe")
+        if not chave:
+            chave = find_text("./ns:NFe/ns:infNFe/ns:infAdic/ns:chNFe", "./infNFe/infAdic/chNFe")
+
+        cnpj_emitente = find_text("./ns:NFe/ns:infNFe/ns:emit/ns:CNPJ", "./infNFe/emit/CNPJ")
+        nome_emitente = find_text("./ns:NFe/ns:infNFe/ns:emit/ns:xNome", "./infNFe/emit/xNome")
         
         cnpj_emitente = self.format_cnpj(cnpj_emitente)
-        valorNfe = self.check_none(root.find("./ns:NFe/ns:infNFe/ns:total/ns:ICMSTot/ns:vNF", nsNfe))
+        valorNfe = find_text("./ns:NFe/ns:infNFe/ns:total/ns:ICMSTot/ns:vNF", "./infNFe/total/ICMSTot/vNF")
         data_importacao = date.today()
         data_importacao = data_importacao.strftime("%d/%m/%Y")
         data_saida = ""
@@ -35,34 +46,35 @@ class Read_xml():
         itemNota = 1
         notas = []
         
-        for item in root.findall("./ns:NFe/ns:infNFe/ns:det", nsNfe):
+        for item in findall_nodes("./ns:NFe/ns:infNFe/ns:det", "./infNFe/det"):
             #DADOS DOS ITENS DA NOTA FISCAL
-            codigo = self.check_none(item.find("./ns:prod/ns:cProd", nsNfe))
-            descricao = self.check_none(item.find("./ns:prod/ns:xProd", nsNfe))
-            ncm = self.check_none(item.find("./ns:prod/ns:NCM", nsNfe))
-            quantidade = self.check_none(item.find("./ns:prod/ns:qCom", nsNfe))
-            valor_unitario = self.check_none(item.find("./ns:prod/ns:vUnCom", nsNfe))
-            valor_total = self.check_none(item.find("./ns:prod/ns:vProd", nsNfe))
+            codigo = self.check_none(item.find("./ns:prod/ns:cProd", nsNfe) if has_ns else item.find("./prod/cProd"))
+            descricao = self.check_none(item.find("./ns:prod/ns:xProd", nsNfe) if has_ns else item.find("./prod/xProd"))
+            ncm = self.check_none(item.find("./ns:prod/ns:NCM", nsNfe) if has_ns else item.find("./prod/NCM"))
+            quantidade = self.check_none(item.find("./ns:prod/ns:qCom", nsNfe) if has_ns else item.find("./prod/qCom"))
+            valor_unitario = self.check_none(item.find("./ns:prod/ns:vUnCom", nsNfe) if has_ns else item.find("./prod/vUnCom"))
+            valor_total = self.check_none(item.find("./ns:prod/ns:vProd", nsNfe) if has_ns else item.find("./prod/vProd"))
             
-            notas.append({
-                "itemNota": itemNota,
-                "codigo": codigo,
-                "descricao": descricao,
-                "ncm": ncm,
-                "quantidade": quantidade,
-                "valor_unitario": valor_unitario,
-                "valor_total": valor_total,
-                "nfe": nfe,
-                "serie": serie,
-                "data_emissao": data_emissao,
-                "chave": chave,
-                "cnpj_emitente": cnpj_emitente,
-                "nome_emitente": nome_emitente,
-                "valorNfe": valorNfe,
-                "data_importacao": data_importacao,
-                "data_saida": data_saida,
-                "usuario": usuario
-            })
+            # Ordem deve bater com a lista de colunas usada no banco.
+            notas.append((
+                nfe,
+                serie,
+                data_emissao,
+                chave,
+                cnpj_emitente,
+                nome_emitente,
+                valorNfe,
+                data_importacao,
+                itemNota,
+                codigo,
+                descricao,
+                ncm,
+                quantidade,
+                valor_unitario,
+                valor_total,
+                usuario,
+                data_saida,
+            ))
             itemNota += 1
         return notas
         

@@ -20,7 +20,6 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
     QProgressBar, QPushButton, QSizePolicy, QStackedWidget,
     QTabWidget, QTableView, QTreeWidget, QTreeWidgetItem,
     QVBoxLayout, QWidget)
-import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -750,10 +749,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_18.addWidget(self.txt_filtro)
 
-        self.tb_estoque = QTableView(self.Tab2)
-        self.tb_estoque.setObjectName(u"tb_estoque")
+        self.tb_geral = QTableView(self.Tab2)
+        self.tb_geral.setObjectName(u"tb_geral")
 
-        self.verticalLayout_18.addWidget(self.tb_estoque)
+        self.verticalLayout_18.addWidget(self.tb_geral)
 
         self.tb_base.addTab(self.Tab2, "")
 
@@ -767,7 +766,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.Pages.setCurrentIndex(1)
+        self.Pages.setCurrentIndex(5)
         self.tb_base.setCurrentIndex(1)
 
 
@@ -840,15 +839,15 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:600; color:#4b3f72;\">SA\u00cdDA</span></p></body></html>", None))
         ___qtreewidgetitem1 = self.tw_saida.headerItem()
         ___qtreewidgetitem1.setText(4, QCoreApplication.translate("MainWindow", u"Usuario", None));
-        ___qtreewidgetitem1.setText(3, QCoreApplication.translate("MainWindow", u"Data Importa\u00e7\u00e3o", None));
-        ___qtreewidgetitem1.setText(2, QCoreApplication.translate("MainWindow", u"Data Importa", None));
-        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("MainWindow", u"S\u00e9rio", None));
+        ___qtreewidgetitem1.setText(3, QCoreApplication.translate("MainWindow", u"Data Saida", None));
+        ___qtreewidgetitem1.setText(2, QCoreApplication.translate("MainWindow", u"Data Importa\u00e7\u00e3o", None));
+        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("MainWindow", u"S\u00e9rie", None));
         ___qtreewidgetitem1.setText(0, QCoreApplication.translate("MainWindow", u"NFe", None));
         self.tb_base.setTabText(self.tb_base.indexOf(self.tables), QCoreApplication.translate("MainWindow", u"Base", None))
-        self.label_30.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#4b3f72;\">Estoque</span></p></body></html>", None))
+        self.label_30.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#4b3f72;\">Geral</span></p></body></html>", None))
         self.btn_chart.setText(QCoreApplication.translate("MainWindow", u"Gerar Gr\u00e1fico", None))
         self.btn_excel.setText(QCoreApplication.translate("MainWindow", u"Gerar Excel", None))
         self.txt_filtro.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Filtro", None))
-        self.tb_base.setTabText(self.tb_base.indexOf(self.Tab2), QCoreApplication.translate("MainWindow", u"Estoque", None))
+        self.tb_base.setTabText(self.tb_base.indexOf(self.Tab2), QCoreApplication.translate("MainWindow", u"Geral", None))
     # retranslateUi
 
