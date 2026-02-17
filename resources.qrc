@@ -1,8 +1,9 @@
 <RCC>
   <qresource prefix="/img">
     <file>img/logo.png</file>
-    <file>img/phone.png</file>
-    <file>img/rede.png</file>
+    <file>img/linkedin.png</file>
+    <file>img/github.png</file>
     <file>img/email.png</file>
+    <file>img/cadastro.png</file>
   </qresource>
 </RCC>

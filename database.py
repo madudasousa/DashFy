@@ -71,11 +71,15 @@ class Database():
         
         inserted = 0
         failed = 0
+        skipped = 0
         for nota in full_dataset:
             try:
                 cursor.execute(query, nota)
                 self.connection.commit()
                 inserted += 1
+            except sqlite3.IntegrityError:
+                # Ignora duplicados
+                skipped += 1
             except sqlite3.Error as e:
                 failed += 1
                 print(f"Erro ao inserir dados: {e}")

@@ -1,0 +1,51 @@
+<NFeList> 
+  <NFe>
+    <infNFe>
+      <ide><nNF>10009</nNF><serie>1</serie><dhEmi>2025-01-18</dhEmi></ide>
+      <emit><CNPJ>12345678000199</CNPJ><xNome>Empresa Exemplo LTDA</xNome></emit>
+      <total><ICMSTot><vNF>2200.00</vNF></ICMSTot></total>
+      <det nItem="1"><prod><cProd>010</cProd><xProd>Produto Exemplo J</xProd><NCM>84713012</NCM><qCom>22</qCom><vUnCom>100.00</vUnCom><vProd>2200.00</vProd></prod></det>
+      <infAdic><chNFe>35250112345678000199550010000100091234567890</chNFe></infAdic>
+    </infNFe>
+  </NFe>
+
+  <NFe>
+    <infNFe>
+      <ide><nNF>10010</nNF><serie>1</serie><dhEmi>2025-01-19</dhEmi></ide>
+      <emit><CNPJ>12345678000199</CNPJ><xNome>Empresa Exemplo LTDA</xNome></emit>
+      <total><ICMSTot><vNF>900.00</vNF></ICMSTot></total>
+      <det nItem="1"><prod><cProd>011</cProd><xProd>Produto Exemplo K</xProd><NCM>84713012</NCM><qCom>9</qCom><vUnCom>100.00</vUnCom><vProd>900.00</vProd></prod></det>
+      <infAdic><chNFe>35250112345678000199550010000100101234567890</chNFe></infAdic>
+    </infNFe>
+  </NFe>
+
+  <NFe>
+    <infNFe>
+      <ide><nNF>10011</nNF><serie>1</serie><dhEmi>2025-01-20</dhEmi></ide>
+      <emit><CNPJ>12345678000199</CNPJ><xNome>Empresa Exemplo LTDA</xNome></emit>
+      <total><ICMSTot><vNF>3500.00</vNF></ICMSTot></total>
+      <det nItem="1"><prod><cProd>012</cProd><xProd>Produto Exemplo L</xProd><NCM>84713012</NCM><qCom>35</qCom><vUnCom>100.00</vUnCom><vProd>3500.00</vProd></prod></det>
+      <infAdic><chNFe>35250112345678000199550010000100111234567890</chNFe></infAdic>
+    </infNFe>
+  </NFe>
+
+  <NFe>
+    <infNFe>
+      <ide><nNF>10012</nNF><serie>1</serie><dhEmi>2025-01-21</dhEmi></ide>
+      <emit><CNPJ>12345678000199</CNPJ><xNome>Empresa Exemplo LTDA</xNome></emit>
+      <total><ICMSTot><vNF>1600.00</vNF></ICMSTot></total>
+      <det nItem="1"><prod><cProd>013</cProd><xProd>Produto Exemplo M</xProd><NCM>84713012</NCM><qCom>16</qCom><vUnCom>100.00</vUnCom><vProd>1600.00</vProd></prod></det>
+      <infAdic><chNFe>35250112345678000199550010000100121234567890</chNFe></infAdic>
+    </infNFe>
+  </NFe>
+
+  <NFe>
+    <infNFe>
+      <ide><nNF>10013</nNF><serie>1</serie><dhEmi>2025-01-22</dhEmi></ide>
+      <emit><CNPJ>12345678000199</CNPJ><xNome>Empresa Exemplo LTDA</xNome></emit>
+      <total><ICMSTot><vNF>2800.00</vNF></ICMSTot></total>
+      <det nItem="1"><prod><cProd>014</cProd><xProd>Produto Exemplo N</xProd><NCM>84713012</NCM><qCom>28</qCom><vUnCom>100.00</vUnCom><vProd>2800.00</vProd></prod></det>
+      <infAdic><chNFe>35250112345678000199550010000100131234567890</chNFe></infAdic>
+    </infNFe>
+  </NFe>
+</NFeList>
