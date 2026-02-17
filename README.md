@@ -23,25 +23,27 @@ This project was developed as a portfolio application to demonstrate real-world 
 ### 🔐 Login Screen
 ![Login](img/LoginTela.png)
 
+
+
 ---
 
 ### 🏠 Home Dashboard
-![Home](img/home.png)
+<img src="img/home.png" width="700">
 
 ---
 
 ### 📦 Inventory Management
-![Inventory](img/inventory.png)
+<img src="img/inventory.png" width="700">
 
 ---
 
 ### 📂 XML Import
-![Import](img/import.png)
+<img src="img/import.png" width="700">
 
 ---
 
 ### 📊 General Data View
-![General](img/general.png)
+<img src="img/general.png" width="700">
 
 ---
 ## 🧠 Problem Solved
