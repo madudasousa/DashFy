@@ -18,6 +18,32 @@ This project was developed as a portfolio application to demonstrate real-world 
 
 ---
 
+## 📷 Screenshots
+
+### 🔐 Login Screen
+![Login](img/LoginTela.png)
+
+---
+
+### 🏠 Home Dashboard
+![Home](img/home.png)
+
+---
+
+### 📦 Inventory Management
+![Inventory](img/inventory.png)
+
+---
+
+### 📂 XML Import
+![Import](img/import.png)
+
+---
+
+### 📊 General Data View
+![General](img/general.png)
+
+---
 ## 🧠 Problem Solved
 
 Small operational teams often rely on spreadsheets to control invoice entries and stock movement, which can lead to inconsistencies and manual errors.
@@ -41,7 +67,7 @@ The project follows a modular structure separating:
 - Business logic
 - Database operations
 - XML parsing layer
-
+```
 DashFy/
 ├── main.py # Application entry point and UI event wiring
 ├── database.py # SQLite helpers and CRUD operations
@@ -53,7 +79,7 @@ DashFy/
 ├── xml/ # Example XML files
 ├── img/ # UI assets
 └── main.spec # PyInstaller build configuration
-
+```
 ---
 
 ## 🗄 Database Design
@@ -103,14 +129,15 @@ Initialize database
 
 Start the application
     python main.py
-
+```
+---
 📦 Build Executable
 
 The project includes a PyInstaller specification file:
     pyinstaller main.spec
 
 This generates a standalone executable version of the application.
-
+---
 🔮 Future Improvements
 
 - Password hashing implementation
@@ -122,7 +149,7 @@ This generates a standalone executable version of the application.
 - Unit testing for XML parsing and database operations
 
 - REST API layer for future scalability
-
+---
 👩‍💻 About This Project
 
 Dashfy was developed as a portfolio project to demonstrate:
